@@ -1,0 +1,97 @@
+{
+	"name": "lighting-code-generation",
+	"displayName": "lighting-code-generation",
+	"description": "user defined inline code generation",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.67.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+    "onStartupFinished",
+		"onCommand:lighting-code-generation.execute",
+    "onCommand:lighting-code-generation.execute-editor-popup",
+    "onCommand:lighting-code-generation.rollback"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "lighting-code-generation.execute",
+				"title": "Lighting Generate"
+			},
+      {
+				"command": "lighting-code-generation.execute-editor-popup",
+				"title": "Lighting Generate in popup"
+			},
+      {
+				"command": "lighting-code-generation.execute-editor-popup-from-explorer",
+				"title": "Lighting Generate in popup from file explorer"
+			},
+      {
+				"command": "lighting-code-generation.paste-with-end-position",
+				"title": "Paste and move cursor to end position"
+			},
+      {
+				"command": "lighting-code-generation.rollback",
+				"title": "rb:rollback Last Lighting Generation"
+			},
+      {
+				"command": "lighting-code-generation.snippet",
+				"title": "generate code snippet test"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "lighting-code-generation.execute",
+				"key": "cmd+i",
+        "when": "editorTextFocus"
+			},
+      {
+				"command": "lighting-code-generation.execute-editor-popup",
+				"key": "cmd+shift+i",
+        "when": "editorTextFocus"
+			},
+      {
+				"command": "lighting-code-generation.execute-editor-popup-from-explorer",
+				"key": "cmd+shift+i",
+        "when": "filesExplorerFocus"
+			},
+      {
+				"command": "lighting-code-generation.paste-with-end-position",
+				"key": "cmd+shift+v",
+        "when": "editorTextFocus"
+			},
+      {
+				"command": "lighting-code-generation.rollback"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.67.0",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
+		"@vscode/test-electron": "^2.1.3",
+		"eslint": "^8.16.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.2"
+	},
+	"dependencies": {
+		"require-from-string": "^2.0.2",
+		"rollup": "^2.75.6"
+	}
+}
